@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:publish_automatizado/app/model/chamado_model.dart';
+import 'package:publish_automatizado_app/app/model/chamado_model.dart';
 
 part 'chamado_model_store.g.dart';
 

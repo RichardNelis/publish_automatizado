@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:publish_automatizado/app/model/message_model.dart';
-import 'package:publish_automatizado/app/model/sistema_cn_model.dart';
-import 'package:publish_automatizado/app/model/sistema_create_model.dart';
-import 'package:publish_automatizado/app/model/sistema_model.dart';
-import 'package:publish_automatizado/app/repositories/sistema_cn_repository.dart';
-import 'package:publish_automatizado/app/repositories/sistema_repository.dart';
-import 'package:publish_automatizado/app/store/sistema_cn_model_store.dart';
-import 'package:publish_automatizado/app/store/sistema_model_store.dart';
-import 'package:publish_automatizado/app/utils/constants.dart';
+import 'package:publish_automatizado_app/app/model/message_model.dart';
+import 'package:publish_automatizado_app/app/model/sistema_cn_model.dart';
+import 'package:publish_automatizado_app/app/model/sistema_create_model.dart';
+import 'package:publish_automatizado_app/app/model/sistema_model.dart';
+import 'package:publish_automatizado_app/app/repositories/sistema_cn_repository.dart';
+import 'package:publish_automatizado_app/app/repositories/sistema_repository.dart';
+import 'package:publish_automatizado_app/app/store/sistema_cn_model_store.dart';
+import 'package:publish_automatizado_app/app/store/sistema_model_store.dart';
+import 'package:publish_automatizado_app/app/utils/constants.dart';
 
 part 'sistema_store.g.dart';
 

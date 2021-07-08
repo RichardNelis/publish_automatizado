@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:asuka/asuka.dart' as asuka;
-import 'package:publish_automatizado/app/components/custom_snackbar.dart';
-import 'package:publish_automatizado/app/model/message_model.dart';
+import 'package:publish_automatizado_app/app/components/custom_snackbar.dart';
+import 'package:publish_automatizado_app/app/model/message_model.dart';
 
 Future<bool> loadingMessage(context, Future<dynamic> press()) async {
   MessageModel messageModel = MessageModel();

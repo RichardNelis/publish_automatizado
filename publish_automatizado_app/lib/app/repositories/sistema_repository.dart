@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:publish_automatizado/app/model/message_model.dart';
-import 'package:publish_automatizado/app/model/sistema_create_model.dart';
-import 'package:publish_automatizado/app/model/sistema_model.dart';
-import 'package:publish_automatizado/app/utils/constants.dart';
+import 'package:publish_automatizado_app/app/model/message_model.dart';
+import 'package:publish_automatizado_app/app/model/sistema_create_model.dart';
+import 'package:publish_automatizado_app/app/model/sistema_model.dart';
+import 'package:publish_automatizado_app/app/utils/constants.dart';
 
 class SistemaRepository {
   late Dio dio;

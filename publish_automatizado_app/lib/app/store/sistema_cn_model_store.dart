@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:publish_automatizado/app/model/sistema_cn_model.dart';
+import 'package:publish_automatizado_app/app/model/sistema_cn_model.dart';
 
 part 'sistema_cn_model_store.g.dart';
 

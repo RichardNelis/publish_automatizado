@@ -1,6 +1,6 @@
 {
-    "name": "publish_automatizado",
-    "short_name": "publish_automatizado",
+    "name": "publish_automatizado_app",
+    "short_name": "publish_automatizado_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

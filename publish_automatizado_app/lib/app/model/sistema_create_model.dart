@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:publish_automatizado/app/model/sistema_cn_model.dart';
+import 'package:publish_automatizado_app/app/model/sistema_cn_model.dart';
 
 class SistemaCreateModel {
   int? idCodigo;

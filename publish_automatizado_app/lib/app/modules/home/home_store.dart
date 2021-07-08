@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:publish_automatizado/app/model/message_model.dart';
-import 'package:publish_automatizado/app/model/sistema_model.dart';
-import 'package:publish_automatizado/app/repositories/publish_repository.dart';
-import 'package:publish_automatizado/app/repositories/sistema_repository.dart';
-import 'package:publish_automatizado/app/store/chamado_model_store.dart';
+import 'package:publish_automatizado_app/app/model/message_model.dart';
+import 'package:publish_automatizado_app/app/model/sistema_model.dart';
+import 'package:publish_automatizado_app/app/repositories/publish_repository.dart';
+import 'package:publish_automatizado_app/app/repositories/sistema_repository.dart';
+import 'package:publish_automatizado_app/app/store/chamado_model_store.dart';
 
-import 'package:publish_automatizado/app/store/sistema_model_store.dart';
-import 'package:publish_automatizado/app/utils/constants.dart';
+import 'package:publish_automatizado_app/app/store/sistema_model_store.dart';
+import 'package:publish_automatizado_app/app/utils/constants.dart';
 
 part 'home_store.g.dart';
 

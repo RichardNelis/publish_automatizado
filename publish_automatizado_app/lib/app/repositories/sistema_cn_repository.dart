@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:publish_automatizado/app/model/message_model.dart';
-import 'package:publish_automatizado/app/model/sistema_cn_model.dart';
-import 'package:publish_automatizado/app/utils/constants.dart';
+import 'package:publish_automatizado_app/app/model/message_model.dart';
+import 'package:publish_automatizado_app/app/model/sistema_cn_model.dart';
+import 'package:publish_automatizado_app/app/utils/constants.dart';
 
 class SistemaCNRepository {
   late Dio dio;

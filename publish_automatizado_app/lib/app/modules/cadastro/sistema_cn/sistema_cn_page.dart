@@ -1,9 +1,9 @@
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:publish_automatizado/app/components/loading_mensagem.dart';
-import 'package:publish_automatizado/app/modules/cadastro/sistema_cn/sistema_cn_store.dart';
+import 'package:publish_automatizado_app/app/components/loading_mensagem.dart';
+import 'package:publish_automatizado_app/app/modules/cadastro/sistema_cn/sistema_cn_store.dart';
 import 'package:flutter/material.dart';
-import 'package:publish_automatizado/app/store/sistema_cn_model_store.dart';
+import 'package:publish_automatizado_app/app/store/sistema_cn_model_store.dart';
 
 class SistemaCNPage extends StatefulWidget {
   final String title;

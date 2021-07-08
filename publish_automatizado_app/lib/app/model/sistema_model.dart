@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:publish_automatizado/app/model/dependencia_model.dart';
+import 'package:publish_automatizado_app/app/model/dependencia_model.dart';
 
 class SistemaModel {
   int? idCodigo;

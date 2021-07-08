@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(publish_automatizado LANGUAGES CXX)
+project(publish_automatizado_app LANGUAGES CXX)
 
-set(BINARY_NAME "publish_automatizado")
+set(BINARY_NAME "publish_automatizado_app")
 
 cmake_policy(SET CMP0063 NEW)
 

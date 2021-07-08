@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:publish_automatizado/app/components/loading_mensagem.dart';
-import 'package:publish_automatizado/app/modules/home/home_store.dart';
+import 'package:publish_automatizado_app/app/components/loading_mensagem.dart';
+import 'package:publish_automatizado_app/app/modules/home/home_store.dart';
 
 class HomePage extends StatefulWidget {
   final String title;

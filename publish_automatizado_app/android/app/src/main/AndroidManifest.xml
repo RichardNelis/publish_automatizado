@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.publish_automatizado">
+    package="com.example.publish_automatizado_app">
    <application
-        android:label="publish_automatizado"
+        android:label="publish_automatizado_app"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
