@@ -12,7 +12,9 @@ class SistemaModel {
     this.nomeSistema,
     this.caminhoSistema,
     this.dependencia,
-  });
+  }) {
+    idCodigo = idCodigo ?? 0;
+  }
 
   SistemaModel copyWith({
     int? idCodigo,
