@@ -35,10 +35,30 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
       body: Observer(
         builder: (_) {
           if (store.sistemas == null) {
-            return Container(
-              child: Center(
-                child: Text("Carregando..."),
-              ),
+            return Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+                Positioned(
+                  bottom: 50,
+                  child: Row(
+                    children: [
+                      Text("Desenvolvido por "),
+                      Text(
+                        "Richard Nelis",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             );
           }
 
