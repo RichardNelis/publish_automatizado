@@ -28,8 +28,7 @@ namespace PublishAutomarizadoAPI.Infrastructure.CrossCutting.IOC
             #endregion
 
             #region IOC Repositorys SQL
-            builder.RegisterType<RepositorySistema>().As<IRepositorySistema>();
-            builder.RegisterType<RepositorySistemaCN>().As<IRepositorySistemaCN>();
+            builder.RegisterType<RepositorySistema>().As<IRepositorySistema>();            
             builder.RegisterType<RepositoryDependencia>().As<IRepositoryDependencia>();
             #endregion
 

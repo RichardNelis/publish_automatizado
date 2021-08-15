@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using PublishAutomarizadoAPI.Domain.Core.Interfaces.Repositorys;
 using PublishAutomarizadoAPI.Domain.Domain.Models;
+using PublishAutomarizadoAPI.Infrastructure.Data;
 
 public class RepositoryDependencia : RepositoryBase<Dependencia>, IRepositoryDependencia
 {
-    private readonly MySqlContext _context;
+    private readonly Context _context;
 
-    public RepositoryDependencia(MySqlContext Context) : base(Context)
+    public RepositoryDependencia(Context Context) : base(Context)
     {
         _context = Context;
     }

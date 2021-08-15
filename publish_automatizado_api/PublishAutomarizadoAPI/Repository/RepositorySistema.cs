@@ -1,15 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using PublishAutomarizadoAPI.Domain.Core.Interfaces.Repositorys;
 using PublishAutomarizadoAPI.Domain.Domain.Models;
+using PublishAutomarizadoAPI.Infrastructure.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 public class RepositorySistema : RepositoryBase<Sistema>, IRepositorySistema
 {
-    private readonly MySqlContext _context;
+    private readonly Context _context;
 
-    public RepositorySistema(MySqlContext Context) : base(Context)
+    public RepositorySistema(Context Context) : base(Context)
     {
         _context = Context;
     }
