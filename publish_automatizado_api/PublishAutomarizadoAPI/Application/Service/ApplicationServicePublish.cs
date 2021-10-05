@@ -31,12 +31,12 @@ namespace PublishAutomarizadoAPI.Application.Service
                 string pathChamado = CreateDirectoryChamado(dto, pathTemp);
 
                 String pathPublish = Path.Combine(pathTemp, "publishes");
-                String pathPublishChamado = Path.Combine(pathChamado, "publishes");
+                String pathPublishChamado = Path.Combine(pathChamado, "publishes");                
 
                 CreateLogPublish(dto, nomeSistemas, pathChamado);
 
                 Copy(pathPublish, pathPublishChamado);
-                
+
                 ZipFile.CreateFromDirectory(pathChamado, $"{pathChamado}.zip");
 
                 Directory.Delete(pathPublish, true);
@@ -109,8 +109,7 @@ namespace PublishAutomarizadoAPI.Application.Service
 
         private static string CreateDirectoryTemp()
         {
-            //string pathTemp = Path.Combine("C:", "Temp");
-            string pathTemp = Path.GetFullPath(@"\\192.168.1.100\atualizacoes_emergenciais");
+            string pathTemp = Path.Combine("C:", "Temp");
 
             if (!Directory.Exists(pathTemp))
             {
