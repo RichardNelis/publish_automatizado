@@ -110,7 +110,7 @@ namespace PublishAutomarizadoAPI.Application.Service
         private static string CreateDirectoryTemp()
         {
             //string pathTemp = Path.Combine("C:", "Temp");
-            string pathTemp = Path.Combine("\\192.168.1.100", "atualizacoes_emergenciais");
+            string pathTemp = Path.GetFullPath(@"\\192.168.1.100\atualizacoes_emergenciais");
 
             if (!Directory.Exists(pathTemp))
             {
