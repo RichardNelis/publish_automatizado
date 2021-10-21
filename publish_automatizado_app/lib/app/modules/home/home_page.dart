@@ -75,6 +75,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
           return Stack(
             children: [
               Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height * 0.85,
