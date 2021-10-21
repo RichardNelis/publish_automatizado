@@ -10,9 +10,11 @@ namespace PublishAutomarizadoAPI.Application.Service
     public class ApplicationServicePublish : IApplicationServicePublish
     {
         private readonly String msBuild = "\"C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild\"";
+        //private readonly String msBuild = "\"C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin/MSBuild\"";
         private readonly String cnBuild = "/t:Clean,Build";
         private readonly String PublishBuild = "/p:DeployOnBuild=true /p:PublishProfile=Simpliss";
         private readonly String init = "C:/SVN/";
+        //private readonly String init = "D:/Ambiente_Testes/";
 
         private readonly IApplicationServiceSistema _serviceSistema;
 

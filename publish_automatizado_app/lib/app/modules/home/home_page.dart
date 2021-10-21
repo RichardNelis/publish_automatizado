@@ -74,35 +74,126 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
 
           return Stack(
             children: [
-              Container(
-                child: RefreshIndicator(
-                  onRefresh: () => store.fetchSistemas(),
-                  child: ListView.builder(
-                    itemCount: lista.length,
-                    itemBuilder: (context, index) {
-                      var sistema = lista[index];
-                      var model = sistema.model;
+              Column(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.85,
+                    child: RefreshIndicator(
+                      onRefresh: () => store.fetchSistemas(),
+                      child: ListView.builder(
+                        itemCount: lista.length,
+                        itemBuilder: (context, index) {
+                          var sistema = lista[index];
+                          var model = sistema.model;
 
-                      return Observer(
-                        builder: (_) {
-                          return Dismissible(
-                            confirmDismiss: (DismissDirection direction) async {
+                          return Container(
+                            child: Observer(
+                              builder: (_) {
+                                return Dismissible(
+                                  confirmDismiss:
+                                      (DismissDirection direction) async {
+                                    return await showDialog(
+                                      useRootNavigator: false,
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: const Text(
+                                              "Deseja excluir o sistema?"),
+                                          content: const Text(
+                                              "Você tem certeza que deseja excluir o sistema?"),
+                                          actions: <Widget>[
+                                            ElevatedButton(
+                                              onPressed: () async {
+                                                var sucesso =
+                                                    await loadingMessage(
+                                                        context,
+                                                        () => store
+                                                            .excluirSistema(model
+                                                                .idCodigo!));
+
+                                                if (sucesso) {
+                                                  Navigator.of(context)
+                                                      .pop(true);
+                                                } else {
+                                                  Modular.to.pop();
+                                                }
+                                              },
+                                              child: const Text("Confirmar"),
+                                            ),
+                                            ElevatedButton(
+                                              onPressed: () => Modular.to.pop(),
+                                              child: const Text("Cancelar"),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
+                                  direction: DismissDirection.startToEnd,
+                                  background: Container(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    alignment: Alignment.centerLeft,
+                                    child: Icon(Icons.delete),
+                                    color: Colors.red,
+                                  ),
+                                  key: ValueKey(model.idCodigo),
+                                  child: Container(
+                                    child: CheckboxListTile(
+                                      title: Text(model.nomeSistema!),
+                                      value: sistema.isChecked,
+                                      onChanged: sistema.changeCheckBox,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 40,
+                    child: ElevatedButton(
+                      onPressed: store.habilitarBotao
+                          ? () async {
                               return await showDialog(
                                 useRootNavigator: false,
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title:
-                                        const Text("Deseja excluir o sistema?"),
-                                    content: const Text(
-                                        "Você tem certeza que deseja excluir o sistema?"),
+                                    title: const Text("Publish"),
+                                    content: Container(
+                                      height: 180,
+                                      child: Column(
+                                        children: [
+                                          TextFormField(
+                                            decoration: InputDecoration(
+                                                labelText: "Número do Chamado"),
+                                            onChanged: store
+                                                .modelStore.changeNumeroChamado,
+                                          ),
+                                          TextFormField(
+                                            decoration: InputDecoration(
+                                                labelText: "Responsável"),
+                                            onChanged: store
+                                                .modelStore.changeResponsavel,
+                                          ),
+                                          TextFormField(
+                                            decoration: InputDecoration(
+                                                labelText: "Município"),
+                                            onChanged: store
+                                                .modelStore.changeMunicipio,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                     actions: <Widget>[
                                       ElevatedButton(
                                         onPressed: () async {
                                           var sucesso = await loadingMessage(
-                                              context,
-                                              () => store.excluirSistema(
-                                                  model.idCodigo!));
+                                              context, store.gerarPublish);
 
                                           if (sucesso) {
                                             Navigator.of(context).pop(true);
@@ -110,7 +201,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                                             Modular.to.pop();
                                           }
                                         },
-                                        child: const Text("Confirmar"),
+                                        child: const Text("Gerar Publish"),
                                       ),
                                       ElevatedButton(
                                         onPressed: () => Modular.to.pop(),
@@ -120,95 +211,13 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                                   );
                                 },
                               );
-                            },
-                            direction: DismissDirection.startToEnd,
-                            background: Container(
-                              padding: const EdgeInsets.only(left: 20),
-                              alignment: Alignment.centerLeft,
-                              child: Icon(Icons.delete),
-                              color: Colors.red,
-                            ),
-                            key: ValueKey(model.idCodigo),
-                            child: CheckboxListTile(
-                              title: Text(model.nomeSistema!),
-                              value: sistema.isChecked,
-                              onChanged: sistema.changeCheckBox,
-                            ),
-                          );
-                        },
-                      );
-                    },
+                            }
+                          : null,
+                      child: Text("Gerar Publish"),
+                    ),
                   ),
-                ),
+                ],
               ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                left: 0,
-                child: Container(
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: store.habilitarBotao
-                        ? () async {
-                            return await showDialog(
-                              useRootNavigator: false,
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: const Text("Publish"),
-                                  content: Container(
-                                    height: 180,
-                                    child: Column(
-                                      children: [
-                                        TextFormField(
-                                          decoration: InputDecoration(
-                                              labelText: "Número do Chamado"),
-                                          onChanged: store
-                                              .modelStore.changeNumeroChamado,
-                                        ),
-                                        TextFormField(
-                                          decoration: InputDecoration(
-                                              labelText: "Responsável"),
-                                          onChanged: store
-                                              .modelStore.changeResponsavel,
-                                        ),
-                                        TextFormField(
-                                          decoration: InputDecoration(
-                                              labelText: "Município"),
-                                          onChanged:
-                                              store.modelStore.changeMunicipio,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  actions: <Widget>[
-                                    ElevatedButton(
-                                      onPressed: () async {
-                                        var sucesso = await loadingMessage(
-                                            context, store.gerarPublish);
-
-                                        if (sucesso) {
-                                          Navigator.of(context).pop(true);
-                                        } else {
-                                          Modular.to.pop();
-                                        }
-                                      },
-                                      child: const Text("Gerar Publish"),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () => Modular.to.pop(),
-                                      child: const Text("Cancelar"),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          }
-                        : null,
-                    child: Text("Gerar Publish"),
-                  ),
-                ),
-              )
             ],
           );
         },
