@@ -6,6 +6,7 @@ using PublishAutomarizadoAPI.Domain.Core.Interfaces.Services;
 using PublishAutomarizadoAPI.Domain.Services;
 using PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Interfaces;
 using PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Map;
+using PublishAutomarizadoAPI.Repository;
 
 namespace PublishAutomarizadoAPI.Infrastructure.CrossCutting.IOC
 {
@@ -28,7 +29,8 @@ namespace PublishAutomarizadoAPI.Infrastructure.CrossCutting.IOC
             #endregion
 
             #region IOC Repositorys SQL
-            builder.RegisterType<RepositorySistema>().As<IRepositorySistema>();            
+            builder.RegisterType<RepositorySistema>().As<IRepositorySistema>();
+            builder.RegisterType<RepositorySistemaCN>().As<IRepositorySistemaCN>();
             builder.RegisterType<RepositoryDependencia>().As<IRepositoryDependencia>();
             #endregion
 
