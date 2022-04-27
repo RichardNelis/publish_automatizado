@@ -1,6 +1,5 @@
 using PublishAutomarizadoAPI.Domain.Domain.Models;
 using PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Interfaces;
-using System.Collections.Generic;
 
 namespace PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Map
 {
@@ -27,7 +26,7 @@ namespace PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Map
         public DependenciaDTO MapperToEntity(Dependencia obj)
         {
             DependenciaDTO dependencia = new DependenciaDTO
-            {                
+            {
                 SistemaCNDTOs = obj.SistemaCNs == null ? null : _mapperSistemaCN.MapperToListDTO(obj.SistemaCNs),
             };
 

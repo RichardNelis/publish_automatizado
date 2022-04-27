@@ -1,10 +1,10 @@
+using PublishAutomarizadoAPI.Domain.Core.Interfaces.Repositorys;
+using PublishAutomarizadoAPI.Domain.Domain.Models;
+using PublishAutomarizadoAPI.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PublishAutomarizadoAPI.Domain.Core.Interfaces.Repositorys;
-using PublishAutomarizadoAPI.Domain.Domain.Models;
-using PublishAutomarizadoAPI.Infrastructure.Data;
 
 public class RepositoryDependencia : RepositoryBase<Dependencia>, IRepositoryDependencia
 {
@@ -25,7 +25,7 @@ public class RepositoryDependencia : RepositoryBase<Dependencia>, IRepositoryDep
             {
                 _context.Set<Dependencia>().Remove(dependencia);
             }
-            
+
             await _context.SaveChangesAsync();
         }
         catch (Exception ex)

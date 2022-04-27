@@ -1,5 +1,4 @@
 ﻿using PublishAutomarizadoAPI.Domain.Domain.Models;
-using System.Collections.Generic;
 
 namespace PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Interfaces
 {
@@ -7,8 +6,8 @@ namespace PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Interfaces
     {
         //ICollection<DependenciaDTO> MapperToListDTO(ICollection<Dependencia> objs);
 
-        Dependencia MapperToEntity (int IdSistema, int IdSistemaCN);
+        Dependencia MapperToEntity(int IdSistema, int IdSistemaCN);
 
-        DependenciaDTO MapperToEntity (Dependencia obj);
+        DependenciaDTO MapperToEntity(Dependencia obj);
     }
 }

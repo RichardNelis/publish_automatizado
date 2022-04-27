@@ -2,7 +2,6 @@
 using PublishAutomarizadoAPI.Domain.Core.Interfaces.Services;
 using PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PublishAutomarizadoAPI.Application.Service
@@ -32,7 +31,7 @@ namespace PublishAutomarizadoAPI.Application.Service
         }
 
         public async Task RemoveAllBySistemaAsync(int IdSistema)
-        {            
+        {
             await _service.RemoveAllBySistemaAsync(IdSistema);
         }
 

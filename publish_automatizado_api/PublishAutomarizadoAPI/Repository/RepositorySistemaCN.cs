@@ -1,10 +1,6 @@
 ﻿using PublishAutomarizadoAPI.Domain.Core.Interfaces.Repositorys;
 using PublishAutomarizadoAPI.Domain.Domain.Models;
 using PublishAutomarizadoAPI.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PublishAutomarizadoAPI.Repository
 {

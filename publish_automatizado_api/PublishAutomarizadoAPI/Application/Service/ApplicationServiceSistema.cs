@@ -1,7 +1,6 @@
 ﻿using PublishAutomarizadoAPI.Application.Interfaces;
 using PublishAutomarizadoAPI.Domain.Core.Interfaces.Services;
 using PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Interfaces;
-using PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Map;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

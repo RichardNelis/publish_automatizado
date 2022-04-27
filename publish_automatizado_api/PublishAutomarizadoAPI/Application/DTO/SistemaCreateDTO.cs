@@ -10,5 +10,5 @@ public class SistemaCreateDTO : BaseDTO
     public string CaminhoSistema { get; set; }
 
     [JsonProperty("dependencias", Order = 4)]
-    public ICollection<int> Dependencias { get; set; }    
+    public ICollection<int> Dependencias { get; set; }
 }

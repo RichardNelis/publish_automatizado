@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using PublishAutomarizadoAPI.Domain.Core.Interfaces.Repositorys;
+﻿using PublishAutomarizadoAPI.Domain.Core.Interfaces.Repositorys;
 using PublishAutomarizadoAPI.Domain.Core.Interfaces.Services;
 using PublishAutomarizadoAPI.Domain.Domain.Models;
+using System.Threading.Tasks;
 
 namespace PublishAutomarizadoAPI.Domain.Services
 {

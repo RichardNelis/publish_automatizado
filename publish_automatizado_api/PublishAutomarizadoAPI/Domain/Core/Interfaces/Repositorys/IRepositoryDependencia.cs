@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
 using PublishAutomarizadoAPI.Domain.Domain.Models;
+using System.Threading.Tasks;
 
 namespace PublishAutomarizadoAPI.Domain.Core.Interfaces.Repositorys
 {

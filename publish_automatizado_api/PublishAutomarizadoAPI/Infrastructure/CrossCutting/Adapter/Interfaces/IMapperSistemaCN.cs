@@ -7,7 +7,7 @@ namespace PublishAutomarizadoAPI.Infrastructure.CrossCutting.Adapter.Interfaces
     {
         SistemaCNDTO MapperToDTO(SistemaCN obj);
 
-        SistemaCN MapperToEntity(SistemaCNDTO dto);        
+        SistemaCN MapperToEntity(SistemaCNDTO dto);
 
         ICollection<SistemaCNDTO> MapperToListDTO(ICollection<SistemaCN> objs);
     }

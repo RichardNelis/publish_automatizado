@@ -65,7 +65,7 @@ public class RepositorySistema : RepositoryBase<Sistema>, IRepositorySistema
                     NomeSistema = x.sis.NomeSistema,
                     CaminhoSistema = x.sis.CaminhoSistema,
                     Dependencia = x.dp,
-                })                
+                })
                 .ToListAsync()
         ).ToLookup(x => x.IdCodigo, x => x);
 

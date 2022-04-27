@@ -10,11 +10,9 @@ namespace PublishAutomarizadoAPI.Application.Service
     public class ApplicationServicePublish : IApplicationServicePublish
     {
         private readonly String msBuild = "\"C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild\"";
-        //private readonly String msBuild = "\"C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin/MSBuild\"";
         private readonly String cnBuild = "/t:Clean,Build";
         private readonly String PublishBuild = "/p:DeployOnBuild=true /p:PublishProfile=Simpliss";
         private readonly String init = "C:/SVN/";
-        //private readonly String init = "D:/Ambiente_Testes/";
 
         private readonly IApplicationServiceSistema _serviceSistema;
 
@@ -33,7 +31,7 @@ namespace PublishAutomarizadoAPI.Application.Service
                 string pathChamado = CreateDirectoryChamado(dto, pathTemp);
 
                 String pathPublish = Path.Combine(pathTemp, "publishes");
-                String pathPublishChamado = Path.Combine(pathChamado, "publishes");                
+                String pathPublishChamado = Path.Combine(pathChamado, "publishes");
 
                 CreateLogPublish(dto, nomeSistemas, pathChamado);
 
@@ -54,8 +52,6 @@ namespace PublishAutomarizadoAPI.Application.Service
         {
             String nomeSistemas = String.Empty;
 
-            Console.WriteLine("Iniciando a geração do publish");
-
             foreach (var IdSistema in dto.EsSistemas)
             {
                 var sistema = await _serviceSistema.GetByIdAsync(IdSistema);
@@ -64,18 +60,30 @@ namespace PublishAutomarizadoAPI.Application.Service
                 {
                     foreach (var sistemaCn in sistema.Dependencia.SistemaCNDTOs)
                     {
-                        Console.WriteLine($"Build CN: {sistemaCn.CaminhoSistemaCN}");
-                        Processo($"{sistemaCn.CaminhoSistemaCN} {cnBuild}");
+                        String[] pathsCN = sistemaCn.CaminhoSistemaCN.Split('/');
+
+                        String folderCN = $"{init}{pathsCN[0]}";
+
+                        //ProcessoTortoiseCleanUP(folderCN);
+                        //ProcessoTortoiseUpdate(folderCN);
+
+                        ProcessoPublish($"{sistemaCn.CaminhoSistemaCN} {cnBuild}");
                     }
                 }
 
-                Console.WriteLine($"Build Publish: {sistema.CaminhoSistema}");
-                Processo($"{sistema.CaminhoSistema} {PublishBuild}");
+                String[] paths = sistema.CaminhoSistema.Split('/');
+
+                String folder = $"{init}{paths[0]}";
+
+                //ProcessoTortoiseCleanUP(folder);
+                //ProcessoTortoiseUpdate(folder);
+
+                ProcessoPublish($"{sistema.CaminhoSistema} {cnBuild} {PublishBuild}");
+
+                //ProcessoTortoiseCleanUP(folder);
 
                 nomeSistemas += sistema.NomeSistema + ", ";
             }
-
-            Console.WriteLine("Finalizado a geração do publish");
 
             nomeSistemas = nomeSistemas.Substring(0, nomeSistemas.Length - 2);
             return nomeSistemas;
@@ -149,7 +157,7 @@ namespace PublishAutomarizadoAPI.Application.Service
             }
         }
 
-        private void Processo(String caminho)
+        private void ProcessoPublish(String caminho)
         {
             try
             {
@@ -157,35 +165,49 @@ namespace PublishAutomarizadoAPI.Application.Service
                 startInfo.FileName = "cmd.exe";
                 startInfo.Arguments = $"/c {msBuild} {init}{caminho}";
 
-                long peakPagedMem = 0, peakWorkingSet = 0, peakVirtualMem = 0;
-
-                using (Process myProcess = Process.Start(startInfo))
+                using (Process process = Process.Start(startInfo))
                 {
-                    do
-                    {
-                        if (!myProcess.HasExited)
-                        {
-                            myProcess.Refresh();
+                    process.WaitForExit();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
-                            peakPagedMem = myProcess.PeakPagedMemorySize64;
-                            peakVirtualMem = myProcess.PeakVirtualMemorySize64;
-                            peakWorkingSet = myProcess.PeakWorkingSet64;
+        private void ProcessoTortoiseCleanUP(String caminho)
+        {
+            String cleanUP = $"/command:cleanup /noui /noprogressui /nodlg /vacuum /breaklocks /refreshshell /delignored /delunversioned /revert /path:\"{caminho}\"";
 
-                            if (myProcess.Responding)
-                            {
-                                Console.WriteLine("Status = Running");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Status = Not Responding");
-                                throw new Exception();
-                            }
-                        }
-                    }
-                    while (!myProcess.WaitForExit(1000));
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = "TortoiseProc.exe";
+                startInfo.Arguments = $"{cleanUP}";
 
-                    Console.WriteLine();
-                    Console.WriteLine($"Publish Gerado: {caminho}");
+                using (Process process = Process.Start(startInfo))
+                {
+                    process.WaitForExit();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void ProcessoTortoiseUpdate(String caminho)
+        {
+            String update = $"/command:update /path:\"{caminho}\"";
+
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo("cmd.exe", $"/c \"C:\\Program Files\\TortoiseSVN\\bin\\TortoiseProc.exe\" {update}");
+
+                using (Process process = Process.Start(startInfo))
+                {
+                    process.WaitForExit();
                 }
             }
             catch (Exception ex)

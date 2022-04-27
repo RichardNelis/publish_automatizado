@@ -1,5 +1,4 @@
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 public class SistemaDTO : BaseDTO
 {
@@ -10,5 +9,5 @@ public class SistemaDTO : BaseDTO
     public string CaminhoSistema { get; set; }
 
     [JsonProperty("dependencia", Order = 4)]
-    public DependenciaDTO Dependencia { get; set; }    
+    public DependenciaDTO Dependencia { get; set; }
 }
