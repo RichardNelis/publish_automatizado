@@ -11,10 +11,11 @@ namespace PublishAutomarizadoAPI.Application.Service
 {
     public class ApplicationServicePublish : IApplicationServicePublish
     {
-        private readonly String msBuild = "\"C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild\"";
         private readonly String cnBuild = "/t:Clean,Build";
         private readonly String PublishBuild = "/p:DeployOnBuild=true /p:PublishProfile=Simpliss /property:Configuration=Release";
+        
         private readonly String init;
+        private readonly String msBuild;
 
         private readonly IApplicationServiceSistema _serviceSistema;
 
@@ -22,7 +23,10 @@ namespace PublishAutomarizadoAPI.Application.Service
         {
             _serviceSistema = serviceSistema;
 
-            init = new ConfigurationBuilder().AddJsonFile("appSettings.json").Build()["appSettings:Diretorio"];
+            var configurationBuilder = new ConfigurationBuilder().AddJsonFile("appSettings.json").Build();
+
+            init = configurationBuilder["appSettings:DiretorioSVN"];
+            msBuild = $"\"{configurationBuilder["appSettings:DiretorioMSBUILD"]}\"";
         }
 
         public async Task GerarAsync(ChamadoDTO dto)
