@@ -1,5 +1,7 @@
-﻿using PublishAutomarizadoAPI.Application.Interfaces;
+﻿using Microsoft.Extensions.Configuration;
+using PublishAutomarizadoAPI.Application.Interfaces;
 using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -11,14 +13,16 @@ namespace PublishAutomarizadoAPI.Application.Service
     {
         private readonly String msBuild = "\"C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild\"";
         private readonly String cnBuild = "/t:Clean,Build";
-        private readonly String PublishBuild = "/p:DeployOnBuild=true /p:PublishProfile=Simpliss";
-        private readonly String init = "C:/SVN/";
+        private readonly String PublishBuild = "/p:DeployOnBuild=true /p:PublishProfile=Simpliss /property:Configuration=Release";
+        private readonly String init;
 
         private readonly IApplicationServiceSistema _serviceSistema;
 
         public ApplicationServicePublish(IApplicationServiceSistema serviceSistema)
         {
             _serviceSistema = serviceSistema;
+
+            init = new ConfigurationBuilder().AddJsonFile("appSettings.json").Build()["appSettings:Diretorio"];
         }
 
         public async Task GerarAsync(ChamadoDTO dto)
